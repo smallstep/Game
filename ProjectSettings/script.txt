@@ -43,7 +43,6 @@ function callObjectiveCFromJavascript(num){
           window.location=cmd[num];
      }
      else{
-          alert('complete');
      }
  }
 
