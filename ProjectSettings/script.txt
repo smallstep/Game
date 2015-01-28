@@ -39,7 +39,6 @@ function callObjectiveCFromJavascript(num){
                          "jscall://callNative__callback//key__callbackName//value__1"
                       ];
       if(cmd.length >= num){
-          alert(num);
           window.location=cmd[num];
      }
      else{
