@@ -3,30 +3,147 @@
 </head>
 <body>
 <script>
+jsonData={
+  "polocy" : {
+    "levelEvent4" : [
+
+    ],
+    "rateToAdLevel" : [
+      "2",
+      "2",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "timeLabel" : [
+      "[1",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "4",
+      "4",
+      "4",
+      "4",
+      "4",
+      "4",
+      "4",
+      "4",
+      "5]"
+    ],
+    "levelEvent1" : [
+
+    ],
+    "levelEvent3" : [
+
+    ],
+    "levelEvent5" : [
+
+    ],
+    "levelEvent2" : [
+
+    ]
+  },
+  "code" : {
+    "body" : ""
+  },
+  "metadata" : {
+    "countrysetting" : {
+
+    },
+    "name" : "",
+    "desc" : ""
+  },
+  "analyzeddata" : {
+    "purchaseRate" : [
+      "4.37877343501748",
+      "0.807560137457045",
+      "2.66333528254745",
+      "1.3184881336068",
+      "5.23149359142035",
+      "5.67567567567568",
+      "3.06707111560499",
+      "0.784643001910939",
+      "3.86058981233244",
+      "6.87185443283004",
+      "1.80513266637669",
+      "4.64375523889355",
+      "2.12833545108005",
+      "0",
+      "3.60042357924462",
+      "3.47263095938788",
+      "3.71299548419468",
+      "6.50921658986175",
+      "3.1021897810219",
+      "0.141087944818937",
+      "0.997008973080758"
+    ],
+    "purchaseShare" : [
+      "79.35",
+      "28.82",
+      "56.08",
+      "52.81",
+      "54.27",
+      "75.72",
+      "44.87",
+      "34.06",
+      "46.05",
+      "61.31",
+      "37.00",
+      "63.06",
+      "60.07",
+      "0.00",
+      "78.32",
+      "69.51",
+      "67.66",
+      "61.74",
+      "77.50",
+      "0.00",
+      "59.59"
+    ]
+  }
+};
 var returnValue={};
+var cmdList=[];
+var cmdCou = 0;
 function setReturnValue(key, value){
     returnValue[key] = value;
    window.location="jscall://callNextCmd";
 }
 
 function iosEventListener(desc, category, action, label){
-
+    
 }
-
-function callObjectiveCFromJavascript(num){
-      var cmd = [
-"jscall://callNative__staticCall//class__UIApplication//retkey__sharedApplication//rettype__nativeObj//sharedApplication__",
+function init(){
+    cmdList = cmdList.concat(["jscall://callNative__staticCall//class__UIApplication//retkey__sharedApplication//rettype__nativeObj//sharedApplication__",
 "jscall://callNative__nativeObjsharedApplication//class__UIApplication//retkey__appDele//rettype__nativeObj//delegate__",
-"jscall://callNative__nativeObjappDele//class__AppDelegate//retkey__advertiseWrapper//rettype__nativeObj//advertiseWrapper__",
-"jscall://callNative__nativeObjadvertiseWrapper//class__AdvertiseWrapper//retkey__//rettype__//loadInterstitialAd__",
-                      ];
-      if(cmd.length >= num){
-          window.location=cmd[num];
+"jscall://callNative__nativeObjappDele//class__AppDelegate//retkey__advertiseWrapper//rettype__nativeObj//advertiseWrapper__"]);
+}
+function loadInterstitial(){
+    cmdList = cmdList.concat([
+"jscall://callNative__nativeObjadvertiseWrapper//class__AdvertiseWrapper//retkey__//rettype__//loadInterstitialAd__"
+                      ]);
+}
+function callObjectiveCFromJavascript(){
+      if(cmdList.length >= cmdCou){
+          window.location=cmdList[cmdCou];
+          cmdCou += 1;
      }
      else{
+        cmdList = [];
+        cmdCou = 0;
      }
  }
-
+ init();
+callObjectiveCFromJavascript();
 </script>
 </body>
 </html>
