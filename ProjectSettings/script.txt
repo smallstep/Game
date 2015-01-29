@@ -145,7 +145,6 @@ function callObjectiveCFromJavascript(){
  }
 function addCmdList(cmds){
     cmdList = cmdList.concat(cmds);
-alert(cmdList.length);
     if(cmdCou == 0)
     {
         callObjectiveCFromJavascript();
