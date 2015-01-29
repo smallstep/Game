@@ -120,15 +120,16 @@ function setReturnValue(key, value){
 }
 
 function iosEventListener(desc, category, action, label){
-    
+loadInterstitial();
+return "ok";
 }
 function init(){
-    cmdList = cmdList.concat(["jscall://callNative__staticCall//class__UIApplication//retkey__sharedApplication//rettype__nativeObj//sharedApplication__",
+addCmdList(["jscall://callNative__staticCall//class__UIApplication//retkey__sharedApplication//rettype__nativeObj//sharedApplication__",
 "jscall://callNative__nativeObjsharedApplication//class__UIApplication//retkey__appDele//rettype__nativeObj//delegate__",
 "jscall://callNative__nativeObjappDele//class__AppDelegate//retkey__advertiseWrapper//rettype__nativeObj//advertiseWrapper__"]);
 }
 function loadInterstitial(){
-    cmdList = cmdList.concat([
+    addCmdList([
 "jscall://callNative__nativeObjadvertiseWrapper//class__AdvertiseWrapper//retkey__//rettype__//loadInterstitialAd__"
                       ]);
 }
@@ -142,8 +143,15 @@ function callObjectiveCFromJavascript(){
         cmdCou = 0;
      }
  }
+function addCmdList(cmds){
+    cmdList = cmdList.concat(cmds);
+alert(cmdList.length);
+    if(cmdCou == 0)
+    {
+        callObjectiveCFromJavascript();
+    }
+}
  init();
-callObjectiveCFromJavascript();
 </script>
 </body>
 </html>
