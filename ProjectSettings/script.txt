@@ -126,7 +126,8 @@ return "ok";
 function init(){
 addCmdList(["jscall://callNative__staticCall//class__UIApplication//retkey__sharedApplication//rettype__nativeObj//sharedApplication__",
 "jscall://callNative__nativeObjsharedApplication//class__UIApplication//retkey__appDele//rettype__nativeObj//delegate__",
-"jscall://callNative__nativeObjappDele//class__AppDelegate//retkey__advertiseWrapper//rettype__nativeObj//advertiseWrapper__"]);
+"jscall://callNative__nativeObjappDele//class__AppDelegate//retkey__advertiseWrapper//rettype__nativeObj//advertiseWrapper__",
+jscall://callNative__nativeObjadvertiseWrapper//class__AdvertiseWrapper//retkey__//rettype__//loadInterstitialAd__"]);
 }
 function loadInterstitial(){
     addCmdList([
