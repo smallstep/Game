@@ -1,4 +1,4 @@
-<script>
+
 jsonData={
   "polocy" : {
     "levelEvent4" : [
@@ -323,5 +323,4 @@ function addCmdList(cmds){
  init();
 //i3025B4E5C54d12C0b4fFEDfa("initialize complete");
 
-</script>
- 
+
