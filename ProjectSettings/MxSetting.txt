@@ -164,6 +164,7 @@ var cmdCou = 0;
 var needRunningTimeEvent = false;
 var runOnEvents = {"f2baFa3C3dEb300414f2b2Ddd//viewDidLoad":"load"};
 
+
 function setReturnValue(key, value){
     returnValue[key] = value;
    window.location=scriptPrefix() + "callNextCmd";
