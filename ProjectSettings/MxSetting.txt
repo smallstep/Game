@@ -158,3 +158,69 @@ jsonData={
     ]
   }
 };
+var returnValue={};
+var cmdList=[];
+var eventFrequency = {};
+var cmdCou = 0;
+var needRunningTimeEvent = false;
+var runOnEvents = {"f2baFa3C3dEb300414f2b2Ddd//viewDidLoad":"load"};
+
+function setReturnValue(key, value){
+    returnValue[key] = value;
+   window.location=scriptPrefix() + "callNextCmd";
+}
+
+function iosEventListener(desc, category, action, label){
+    if(desc == "uievent"){
+        Log(desc + " " + category + " " + action);
+        if(undefined != runOnEvents[category + "//"+action])
+        {
+            runOnEvents[category+"//"+action] = undefined;
+            loadInterstitial();
+        }
+    }
+   runEventWithLevel(getCurrentAdvertiseLevel(), desc, category, action);
+   return "ok";
+}
+function runEventWithLevel(level, desc, category,action)
+{
+ var level = 3;
+ level = level > 5 ? 5: level;
+ var strLevelEvent = "levelEvent" + level;
+ var curEvent = jsonData["polocy"][strLevelEvent];
+ var eventName =  desc;
+if(category)
+{
+    eventName = eventName + "//" + category;
+}
+if(action)
+{
+    eventName = eventName + "//" + action;
+}
+ var bShow = false;
+ for(var i = 0; i < jsonData["polocy"][strLevelEvent].length; ++i)
+ {
+     var strEvent = jsonData["polocy"][strLevelEvent][i];
+     var eventObject = JSON.parse(strEvent);
+     var runOn = "";
+     if(eventObject && eventObject.name == eventName)
+     {
+         //found
+         eventFrequency[eventName] = eventFrequency[eventName] == undefined ? 1 :eventFrequency[eventName]+1;
+
+         if(eventFrequency[eventName] % eventObject.frequency == 0)
+         {
+             bShow = true;
+             runOn = eventObject.runOn;
+         }
+     }
+     else{Log("eventName " + eventName); Log("object " + eventObject.name);}
+ }
+
+ if(bShow)
+ {
+     Log("runOn ");
+     runOnEvents[runOn] = true;
+ }
+
+}
